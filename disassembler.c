@@ -58,6 +58,7 @@ int disassemble(unsigned char *codebuffer, int pc) {
         case 0x0f:
             printf("RRC");
             break;
+
         case 0x11:
             printf("LXI    D,#$%02x%02x", code[2], code[1]);
             opbytes = 3;
@@ -103,6 +104,7 @@ int disassemble(unsigned char *codebuffer, int pc) {
         case 0x1f:
             printf("RAR");
             break;
+
         case 0x21:
             printf("LXI    H,#$%02x%02x", code[2], code[1]);
             opbytes = 3;
@@ -150,6 +152,7 @@ int disassemble(unsigned char *codebuffer, int pc) {
         case 0x2f:
             printf("CMA");
             break;
+
         case 0x31:
             printf("LXI    SP,#$%02x%02x", code[2], code[1]);
             opbytes = 3;
@@ -197,6 +200,7 @@ int disassemble(unsigned char *codebuffer, int pc) {
         case 0x3f:
             printf("CMC");
             break;
+            
         case 0x40:
             printf("MOV    B,B");
             break;
@@ -589,68 +593,214 @@ int disassemble(unsigned char *codebuffer, int pc) {
             printf("CMP    A");
             break;
 
-        case 0xc0:  printf("RNZ");  break;
-        case 0xc1:  printf("POP    B");  break;
-        case 0xc2:  printf("JNZ    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xc3:  printf("JMP    $%02x%02x", code[2], code[1]);  opbytes = 3;break;
-        case 0xc4:  printf("CNZ    $%02x%02x", code[2], code[1]);  opbytes = 3;break;
-        case 0xc5:  printf("PUSH   B");  break;
-        case 0xc6:  printf("ADI    #$%02x", code[1]);  opbytes = 2;break;
-        case 0xc7:  printf("RST    0");  break;
-        case 0xc8:  printf("RZ");  break;
-        case 0xc9:  printf("RET");  break;
-        case 0xca:  printf("JZ     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xcc:  printf("CZ     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xcd:  printf("CALL   $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xce:  printf("ACI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xcf:  printf("RST    1");  break;
+        case 0xc0:
+            printf("RNZ");
+            break;
+        case 0xc1:
+            printf("POP    B");
+            break;
+        case 0xc2:
+            printf("JNZ    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xc3:
+            printf("JMP    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xc4:
+            printf("CNZ    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xc5:
+            printf("PUSH   B");
+            break;
+        case 0xc6:
+            printf("ADI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xc7:
+            printf("RST    0");
+            break;
+        case 0xc8:
+            printf("RZ");
+            break;
+        case 0xc9:
+            printf("RET");
+            break;
+        case 0xca:
+            printf("JZ     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xcc:
+            printf("CZ     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xcd:
+            printf("CALL   $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xce:
+            printf("ACI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xcf:
+            printf("RST    1");
+            break;
 
-        case 0xd0:  printf("RNC");  break;
-        case 0xd1:  printf("POP    D");  break;
-        case 0xd2:  printf("JNC    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xd3:  printf("OUT    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xd4:  printf("CNC    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xd5:  printf("PUSH   D");  break;
-        case 0xd6:  printf("SUI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xd7:  printf("RST    2");  break;
-        case 0xd8:  printf("RC");  break;
-        case 0xda:  printf("JC     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xdb:  printf("IN     #$%02x", code[1]);  opbytes = 2; break;
-        case 0xdc:  printf("CC     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xde:  printf("SBI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xdf:  printf("RST    3");  break;
+        case 0xd0:
+            printf("RNC");
+            break;
+        case 0xd1:
+            printf("POP    D");
+            break;
+        case 0xd2:
+            printf("JNC    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xd3:
+            printf("OUT    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xd4:
+            printf("CNC    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xd5:
+            printf("PUSH   D");
+            break;
+        case 0xd6:
+            printf("SUI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xd7:
+            printf("RST    2");
+            break;
+        case 0xd8:
+            printf("RC");
+            break;
+        case 0xda:
+            printf("JC     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xdb:
+            printf("IN     #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xdc:
+            printf("CC     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xde:
+            printf("SBI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xdf:
+            printf("RST    3");
+            break;
 
-        case 0xe0:  printf("RPO");  break;
-        case 0xe1:  printf("POP    H");  break;
-        case 0xe2:  printf("JPO    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xe3:  printf("XTHL");  break;
-        case 0xe4:  printf("CPO    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xe5:  printf("PUSH   H");  break;
-        case 0xe6:  printf("ANI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xe7:  printf("RST    4");  break;
-        case 0xe8:  printf("RPE");  break;
-        case 0xe9:  printf("PCHL");  break;
-        case 0xea:  printf("JPE    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xeb:  printf("XCHNG");  break;
-        case 0xec:  printf("CPE    $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xee:  printf("XRI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xef:  printf("RST    5");  break;
+        case 0xe0:
+            printf("RPO");
+            break;
+        case 0xe1:
+            printf("POP    H");
+            break;
+        case 0xe2:
+            printf("JPO    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xe3:
+            printf("XTHL");
+            break;
+        case 0xe4:
+            printf("CPO    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xe5:
+            printf("PUSH   H");
+            break;
+        case 0xe6:
+            printf("ANI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xe7:
+            printf("RST    4");
+            break;
+        case 0xe8:
+            printf("RPE");
+            break;
+        case 0xe9:
+            printf("PCHL");
+            break;
+        case 0xea:
+            printf("JPE    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xeb:
+            printf("XCHNG");
+            break;
+        case 0xec:
+            printf("CPE    $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xee:
+            printf("XRI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xef:
+            printf("RST    5");
+            break;
 
-        case 0xf0:  printf("RP");  break;
-        case 0xf1:  printf("POP    PSW");  break;
-        case 0xf2:  printf("JP     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xf3:  printf("DI");  break;
-        case 0xf4:  printf("CP     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xf5:  printf("PUSH   PSW");  break;
-        case 0xf6:  printf("ORI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xf7:  printf("RST    6");  break;
-        case 0xf8:  printf("RM");  break;
-        case 0xf9:  printf("SPHL");  break;
-        case 0xfa:  printf("JM     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xfb:  printf("EI");  break;
-        case 0xfc:  printf("CM     $%02x%02x", code[2], code[1]);  opbytes = 3; break;
-        case 0xfe:  printf("CPI    #$%02x", code[1]);  opbytes = 2; break;
-        case 0xff:  printf("RST    7");  break;
+        case 0xf0:
+            printf("RP");
+            break;
+        case 0xf1:
+            printf("POP    PSW");
+            break;
+        case 0xf2:
+            printf("JP     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xf3:
+            printf("DI");
+            break;
+        case 0xf4:
+            printf("CP     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xf5:
+            printf("PUSH   PSW");
+            break;
+        case 0xf6:
+            printf("ORI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xf7:
+            printf("RST    6");
+            break;
+        case 0xf8:
+            printf("RM");
+            break;
+        case 0xf9:
+            printf("SPHL");
+            break;
+        case 0xfa:
+            printf("JM     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xfb:
+            printf("EI");
+            break;
+        case 0xfc:
+            printf("CM     $%02x%02x", code[2], code[1]);
+            opbytes = 3;
+            break;
+        case 0xfe:
+            printf("CPI    #$%02x", code[1]);
+            opbytes = 2;
+            break;
+        case 0xff:
+            printf("RST    7");
+            break;
 
         default:
             printf("UNK");
