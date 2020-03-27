@@ -4,3 +4,4 @@ project(invaders_emulator C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(disassembler disassembler.c)
+add_executable(invaders invaders.c)
